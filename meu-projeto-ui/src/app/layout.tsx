@@ -1,18 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Lato } from "next/font/google"; 
+import { Lato } from "next/font/google";  // Mantendo apenas a Lato
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
+// Lato com variáveis
 const lato = Lato({
   weight: ['400', '700'],
   subsets: ['latin'],
@@ -32,7 +22,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${lato.variable} antialiased`}>
-      
         {children}
       </body>
     </html>
