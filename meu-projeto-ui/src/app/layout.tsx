@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Lato } from "next/font/google";  // Mantendo apenas a Lato
+import { Lato } from "next/font/google"; 
 import "./globals.css";
 
-// Lato com variáveis
 const lato = Lato({
   weight: ['400', '700'],
   subsets: ['latin'],
