@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import 'tw-animate-css';
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .outline-ring-50 {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+  }
+}
