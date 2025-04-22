@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function TipoCadastro({ onSelect }: { onSelect: (tipo: string) => void }) {
   return (
-    <div className="p-6 rounded-lg mx-auto">
+    <div className="p-5 rounded-lg mx-auto">
       <div className="flex items-center mb-6">
         <h1 className="text-[48px] font-bold text-[#fe5000]" style={{ fontFamily: 'Lato, sans-serif', whiteSpace: 'nowrap' }}>
           Fiança Rápida
