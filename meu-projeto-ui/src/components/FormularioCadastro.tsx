@@ -1,11 +1,14 @@
-// components/FormularioCadastro.tsx
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "./ui/button";
 
-export default function FormularioCadastro({ tipo }: { tipo: string }) {
-  console.log("Tipo recebido:", tipo)
-
+export default function FormularioCadastro({
+  tipo,
+  onVoltar,
+}: {
+  tipo: string;
+  onVoltar: () => void;
+}) {
   return (
     <form className="space-y-4">
       {tipo === "assessor" ? (
@@ -18,7 +21,6 @@ export default function FormularioCadastro({ tipo }: { tipo: string }) {
             <Label htmlFor="cpf">CPF</Label>
             <Input id="cpf" type="text" required />
           </div>
-          {/* Adicione outros campos necessários */}
         </>
       ) : (
         <>
@@ -30,9 +32,9 @@ export default function FormularioCadastro({ tipo }: { tipo: string }) {
             <Label htmlFor="cnpj">CNPJ</Label>
             <Input id="cnpj" type="text" required />
           </div>
-          {/* Adicione outros campos necessários */}
         </>
       )}
+
       {/* Campos comuns */}
       <div>
         <Label htmlFor="email">E-mail</Label>
@@ -42,12 +44,20 @@ export default function FormularioCadastro({ tipo }: { tipo: string }) {
         <Label htmlFor="telefone">Telefone</Label>
         <Input id="telefone" type="tel" required />
       </div>
+
       {/* Botões */}
       <div className="flex justify-between">
-        <Button variant="ghost" type="button">
+        <Button
+          variant="outline"
+          type="button"
+          onClick={onVoltar}
+          className="text-[#fe5000] border-[#fe5000] hover:bg-orange-100"
+        >
           Voltar
         </Button>
-        <Button type="submit">Cadastrar</Button>
+        <Button className="bg-[#fe5000] hover:bg-[#e14a00] text-white" type="submit">
+          Cadastrar
+        </Button>
       </div>
     </form>
   );

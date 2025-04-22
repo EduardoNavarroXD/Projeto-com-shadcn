@@ -57,7 +57,7 @@ export default function LoginForm() {
 
         <div className="flex justify-between text-sm text-blue-600">
           <a href="#" className="hover:underline">Esqueceu sua senha?</a>
-          <Link href="/cadastro" className="hover:underline">Criar conta</Link>
+          <Link href="/cadastro" className="hover:underline text-[#fe5000]">Criar conta</Link>
         </div>
 
         <Button type="submit" className="w-full mt-4 bg-[#fe5000] text-white">Entrar</Button>
