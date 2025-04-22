@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Eye, EyeOff } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import Link from "next/link"
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
@@ -56,7 +57,7 @@ export default function LoginForm() {
 
         <div className="flex justify-between text-sm text-blue-600">
           <a href="#" className="hover:underline">Esqueceu sua senha?</a>
-          <a href="#" className="hover:underline text-[#fe5000]">Criar conta</a>
+          <Link href="/cadastro" className="hover:underline">Criar conta</Link>
         </div>
 
         <Button type="submit" className="w-full mt-4 bg-[#fe5000] text-white">Entrar</Button>
