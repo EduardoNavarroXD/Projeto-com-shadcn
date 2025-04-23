@@ -1,16 +1,18 @@
+"use client";
+
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "./ui/button";
 import Image from "next/image";
-import { Lato } from "next/font/google"
-import Header from '@/components/Header'
+import { Lato } from "next/font/google";
+import Header from '@/components/Header';
 
 const latoBoldItalic = Lato({
-    weight: '700',
-    style: 'italic',
-    subsets: ['latin'],
-  });
+  weight: '700',
+  style: 'italic',
+  subsets: ['latin'],
+});
 
 interface FormularioCadastroProps {
   tipo: string;
@@ -55,18 +57,18 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
     setTelefone(formatarTelefone(value));
   };
 
-  const [cnpj, setCnpj] = useState ("")
+  const [cnpj, setCnpj] = useState("");
 
   const handleCnpjChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setCnpj(formatarCnpj(value))
-  }
+    setCnpj(formatarCnpj(value));
+  };
 
   return (
     <form className="space-y-4">
-      <div className="px-16">
-            <Header />
-            </div>
+      <div className="px-8 sm:px-16">
+        <Header />
+      </div>
       {tipo === "assessor" ? (
         <>
           <div>
@@ -76,11 +78,11 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
           <div>
             <Label htmlFor="cpf">CPF</Label>
             <Input 
-            id="cpf" 
-            type="text" 
-            value={cpf} 
-            onChange={handleCpfChange} 
-            required 
+              id="cpf" 
+              type="text" 
+              value={cpf} 
+              onChange={handleCpfChange} 
+              required 
             />
           </div>
         </>
@@ -118,7 +120,7 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
       </div>
 
       {/* Botões */}
-      <div className="flex justify-between">
+      <div className="flex flex-col sm:flex-row justify-between gap-4 sm:gap-0">
         <Button
           variant="outline"
           type="button"

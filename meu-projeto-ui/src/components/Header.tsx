@@ -14,11 +14,11 @@ export default function Header() {
   const router = useRouter()
 
   const handleVoltar = () => {
-    router.back()
+    router.push('/login')
   }
 
   return (
-    <div className="flex items-center gap-4 cursor-pointer" onClick={handleVoltar}>
+    <div className="flex items- gap-4 cursor-pointer" onClick={handleVoltar}>
       <Image
         src="https://app.fiancarapida.com/logo.svg"
         alt="Logo"
