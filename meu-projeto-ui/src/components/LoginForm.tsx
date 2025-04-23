@@ -6,23 +6,30 @@ import { Eye, EyeOff } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Link from "next/link"
+import { Lato } from "next/font/google"
+
+const latoBoldItalic = Lato({
+    weight: '700',
+    style: 'italic',
+    subsets: ['latin'],
+  });
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <div className="flex items-center justify-between mb-6">
-      <h1 className="text-[48px] font-bold text-[#fe5000]" style={{ fontFamily: 'Lato, sans-serif', whiteSpace: 'nowrap' }}>Fiança Rápida</h1>
-      <Image
-        src="https://app.fiancarapida.com/logo.svg"
-        alt="Logo"
-        width={110}
-        height={30}
-        className="object-contain max-w-[150px] h-auto"
-        unoptimized
-      />
-      </div>
+      <div className="flex items-center justify-center gap-4 mb-6">
+              <Image
+                src="https://app.fiancarapida.com/logo.svg"
+                alt="Logo"
+                width={65}
+                height={60}
+                className="object-contain"
+                unoptimized
+              />
+              <h1 className={`${latoBoldItalic.className} text-5xl font-bold italic text-[#fe5000] mb-1`}>Fiança Rápida</h1>
+            </div>
 
       <h2 className="text-xl font-medium mb-4">Fazer login na conta</h2>
 

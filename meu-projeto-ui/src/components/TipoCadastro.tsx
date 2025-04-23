@@ -1,22 +1,28 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Lato } from "next/font/google"
+
+const latoBoldItalic = Lato({
+  weight: '700',
+  style: 'italic',
+  subsets: ['latin'],
+});
 
 export default function TipoCadastro({ onSelect }: { onSelect: (tipo: string) => void }) {
   return (
     <div className="p-5 rounded-lg mx-auto">
-      <div className="flex items-center mb-6">
-        <h1 className="text-[48px] font-bold text-[#fe5000]" style={{ fontFamily: 'Lato, sans-serif', whiteSpace: 'nowrap' }}>
-          Fiança Rápida
-        </h1>
+      <div className="flex items-center justify-center gap-4 mb-6">
         <Image
           src="https://app.fiancarapida.com/logo.svg"
           alt="Logo"
-          width={80}  // Tamanho reduzido
-          height={20} // Tamanho reduzido
-          className="object-contain ml-4" // Aproximando a imagem do título
+          width={60}
+          height={60}
+          className="object-contain"
           unoptimized
         />
+       <h1 className={`${latoBoldItalic.className} text-5xl font-bold italic text-[#fe5000] mb-1`}>Fiança Rápida</h1>
       </div>
+
 
       <p className="text-center text-sm mb-4">
         Para se cadastrar como um parceiro <span className="text-[#fe5000]">Pessoa Física</span>, selecione a opção <span className="text-[#fe5000]">Assessor Autônomo</span>.
