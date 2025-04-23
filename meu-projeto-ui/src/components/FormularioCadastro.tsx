@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { Lato } from "next/font/google"
+import Header from '@/components/Header'
 
 const latoBoldItalic = Lato({
     weight: '700',
@@ -28,6 +29,15 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
     return `${cpf.slice(0, 3)}.${cpf.slice(3, 6)}.${cpf.slice(6, 9)}-${cpf.slice(9, 11)}`;
   };
 
+  const formatarCnpj = (value: string) => {
+    const cnpj = value.replace(/\D/g, "");
+    if (cnpj.length <= 2) return cnpj;
+    if (cnpj.length <= 5) return `${cnpj.slice(0, 2)}.${cnpj.slice(2)}`;
+    if (cnpj.length <= 8) return `${cnpj.slice(0, 2)}.${cnpj.slice(2, 5)}.${cnpj.slice(5)}`;
+    if (cnpj.length <= 12) return `${cnpj.slice(0, 2)}.${cnpj.slice(2, 5)}.${cnpj.slice(5, 8)}/${cnpj.slice(8)}`;
+    return `${cnpj.slice(0, 2)}.${cnpj.slice(2, 5)}.${cnpj.slice(5, 8)}/${cnpj.slice(8, 12)}-${cnpj.slice(12, 14)}`;
+  };
+
   const formatarTelefone = (value: string) => {
     const telefone = value.replace(/\D/g, "");
     if (telefone.length <= 2) return `(${telefone}`;
@@ -45,22 +55,18 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
     setTelefone(formatarTelefone(value));
   };
 
+  const [cnpj, setCnpj] = useState ("")
+
+  const handleCnpjChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setCnpj(formatarCnpj(value))
+  }
+
   return (
     <form className="space-y-4">
-      {/* Título com a logo */}
-      <div className="flex items-center justify-center gap-4 mb-6">
-                    <Image
-                      src="https://app.fiancarapida.com/logo.svg"
-                      alt="Logo"
-                      width={45}
-                      height={60}
-                      className="object-contain"
-                      unoptimized
-                    />
-                    <h1 className={`${latoBoldItalic.className} text-4xl font-bold italic text-[#fe5000] mb-1`}>Fiança Rápida</h1>
-                  </div>
-
-      {/* Campos do formulário */}
+      <div className="px-16">
+            <Header />
+            </div>
       {tipo === "assessor" ? (
         <>
           <div>
@@ -69,7 +75,13 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
           </div>
           <div>
             <Label htmlFor="cpf">CPF</Label>
-            <Input id="cpf" type="text" value={cpf} onChange={handleCpfChange} required />
+            <Input 
+            id="cpf" 
+            type="text" 
+            value={cpf} 
+            onChange={handleCpfChange} 
+            required 
+            />
           </div>
         </>
       ) : (
@@ -80,7 +92,13 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
           </div>
           <div>
             <Label htmlFor="cnpj">CNPJ</Label>
-            <Input id="cnpj" type="text" required />
+            <Input
+              id="cnpj"
+              type="text"
+              value={cnpj}
+              onChange={handleCnpjChange}
+              required
+            />
           </div>
         </>
       )}

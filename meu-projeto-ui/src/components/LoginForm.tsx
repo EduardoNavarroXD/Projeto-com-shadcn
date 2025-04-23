@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Link from "next/link"
 import { Lato } from "next/font/google"
+import Header from '@/components/Header'
 
 const latoBoldItalic = Lato({
     weight: '700',
@@ -19,18 +20,10 @@ export default function LoginForm() {
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <div className="flex items-center justify-center gap-4 mb-6">
-              <Image
-                src="https://app.fiancarapida.com/logo.svg"
-                alt="Logo"
-                width={65}
-                height={60}
-                className="object-contain"
-                unoptimized
-              />
-              <h1 className={`${latoBoldItalic.className} text-5xl font-bold italic text-[#fe5000] mb-1`}>Fiança Rápida</h1>
-            </div>
-
+    <div className="p-5">
+      <Header />
+      </div>
+      
       <h2 className="text-xl font-medium mb-4">Fazer login na conta</h2>
 
       <form className="space-y-4">
@@ -63,7 +56,8 @@ export default function LoginForm() {
         </div>
 
         <div className="flex justify-between text-sm text-blue-600">
-          <a href="#" className="hover:underline">Esqueceu sua senha?</a>
+        <Link href="/esqueceu-senha" className="text-sm hover:underline">Esqueceu a senha?</Link>
+        
           <Link href="/cadastro" className="hover:underline text-[#fe5000]">Criar conta</Link>
         </div>
 
