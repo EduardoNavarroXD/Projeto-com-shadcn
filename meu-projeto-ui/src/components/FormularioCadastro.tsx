@@ -111,9 +111,7 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-
     toast.success("Cadastro enviado com sucesso!");
-
     setCep("");
     setLogradouro("");
     setBairro("");
@@ -152,20 +150,20 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
       {tipo === "assessor" ? (
         <>
           <Label htmlFor="nome">Nome Completo*</Label>
-          <Input id="nome" value={nomeCompleto} onChange={(e) => setNomeCompleto(e.target.value)} required />
+          <Input id="nome" value={nomeCompleto} onChange={(e) => setNomeCompleto(e.target.value)} maxLength={100} required />
           <Label htmlFor="cpf">CPF*</Label>
-          <Input id="cpf" value={cpf} onChange={(e) => setCpf(formatar.cpf(e.target.value))} required />
+          <Input id="cpf" value={cpf} onChange={(e) => setCpf(formatar.cpf(e.target.value))} maxLength={14} required />
         </>
       ) : (
         <>
           <Label htmlFor="razaoSocial">Razão Social*</Label>
-          <Input id="razaoSocial" required />
+          <Input id="razaoSocial" maxLength={100} required />
           <Label htmlFor="nomeFantasia">Nome Fantasia</Label>
-          <Input id="nomeFantasia" />
+          <Input id="nomeFantasia" maxLength={100} />
           <Label htmlFor="cnpj">CNPJ*</Label>
-          <Input id="cnpj" value={cnpj} onChange={(e) => setCnpj(formatar.cnpj(e.target.value))} required />
+          <Input id="cnpj" value={cnpj} onChange={(e) => setCnpj(formatar.cnpj(e.target.value))} maxLength={18} required />
           <Label htmlFor="creci">CRECI</Label>
-          <Input id="creci" />
+          <Input id="creci" maxLength={20} />
         </>
       )}
 
@@ -174,10 +172,10 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
           <Label>Responsáveis Legais*</Label>
           {responsaveis.map((r, idx) => (
             <div key={idx} className="grid grid-cols-1 sm:grid-cols-2 gap-4 border p-4 rounded">
-              <Input placeholder="Nome completo" value={r.nome} onChange={(e) => handleResponsavelChange(idx, "nome", e.target.value)} required />
-              <Input placeholder="CPF" value={r.cpf} onChange={(e) => handleResponsavelChange(idx, "cpf", formatar.cpf(e.target.value))} required />
-              <Input placeholder="Telefone" value={r.telefone} onChange={(e) => handleResponsavelChange(idx, "telefone", formatar.telefone(e.target.value))} required />
-              <Input placeholder="E-mail" type="email" value={r.email} onChange={(e) => handleResponsavelChange(idx, "email", e.target.value)} required />
+              <Input placeholder="Nome completo" value={r.nome} onChange={(e) => handleResponsavelChange(idx, "nome", e.target.value)} maxLength={100} required />
+              <Input placeholder="CPF" value={r.cpf} onChange={(e) => handleResponsavelChange(idx, "cpf", formatar.cpf(e.target.value))} maxLength={14} required />
+              <Input placeholder="Telefone" value={r.telefone} onChange={(e) => handleResponsavelChange(idx, "telefone", formatar.telefone(e.target.value))} maxLength={15} required />
+              <Input placeholder="E-mail" type="email" value={r.email} onChange={(e) => handleResponsavelChange(idx, "email", e.target.value)} maxLength={100} required />
               <Button type="button" variant="outline" className="col-span-full" onClick={() => removeResponsavel(idx)}>Remover responsável</Button>
             </div>
           ))}
@@ -186,9 +184,9 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
       )}
 
       <Label htmlFor="telefone">Telefone*</Label>
-      <Input id="telefone" value={telefone} onChange={(e) => setTelefone(formatar.telefone(e.target.value))} required />
+      <Input id="telefone" value={telefone} onChange={(e) => setTelefone(formatar.telefone(e.target.value))} maxLength={15} required />
       <Label htmlFor="email">E-mail*</Label>
-      <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+      <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={100} required />
 
       <div className="space-y-4">
         {renderUploadZone(personalDocs, setPersonalDocs, "Documentos pessoais*")}
