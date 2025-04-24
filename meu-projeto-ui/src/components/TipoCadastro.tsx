@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Lato } from "next/font/google";
-import Header from "@/components/Header";
 
 const latoBoldItalic = Lato({
   weight: "700",
@@ -15,23 +14,29 @@ const latoBoldItalic = Lato({
 export default function TipoCadastro({ onSelect }: { onSelect: (tipo: string) => void }) {
   const router = useRouter();
   const handleVoltar = () => {
-    router.back();
+    router.push("/login");
   };
 
   return (
     <div className="p-5 rounded-lg mx-auto max-w-md sm:max-w-lg">
-      <div className="flex items-center justify-center gap-4 mb-6">
-        <Image
-          src="https://app.fiancarapida.com/logo.svg"
-          alt="Logo"
-          width={60}
-          height={60}
-          className="object-contain"
-          unoptimized
-        />
+      <div
+        className="flex items-center justify-center gap-2 sm:gap-4 mb-6 min-w-0 cursor-pointer transition"
+        onClick={handleVoltar}
+      >
+        <div className="flex-shrink-0 w-10 h-10 sm:w-14 sm:h-14 relative">
+          <Image
+            src="https://app.fiancarapida.com/logo.svg"
+            alt="Logo"
+            fill
+            className="object-contain"
+            unoptimized
+          />
+        </div>
         <h1
-          onClick={handleVoltar}
-          className={`${latoBoldItalic.className} text-3xl sm:text-5xl font-bold italic text-[#fe5000] mb-1 cursor-pointer`}
+          className={`${latoBoldItalic.className} 
+            font-bold italic text-[#fe5000] whitespace-nowrap
+            text-[clamp(1.25rem,5vw,2rem)]
+            flex-shrink`}
         >
           Fiança Rápida
         </h1>
@@ -46,13 +51,15 @@ export default function TipoCadastro({ onSelect }: { onSelect: (tipo: string) =>
         <span className="text-[#fe5000]">Escritório Associado</span>.
       </p>
 
-      <h2 className="text-xl sm:text-2xl font-semibold text-center mb-6 text-[#fe5000]">Desejo cadastrar um:</h2>
+      <h2 className="text-xl sm:text-2xl font-semibold text-center mb-6 text-[#fe5000]">
+        Desejo cadastrar um:
+      </h2>
 
-      <div className="flex gap-4 flex-wrap justify-center">
+      <div className="flex flex-wrap gap-4 justify-center">
         <Button
           variant="outline"
           onClick={() => onSelect("assessor")}
-          className="text-[#fe5000] border-[#fe5000] hover:bg-orange-100 mb-4 sm:mb-0 w-full sm:w-auto"
+          className="text-[#fe5000] border-[#fe5000] hover:bg-orange-100 w-full sm:w-auto"
         >
           Assessor Autônomo
         </Button>
