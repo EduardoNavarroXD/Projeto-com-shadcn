@@ -129,7 +129,7 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="max-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-br from-white to-gray-100">
+    <div className="m-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-br from-white to-gray-100">
       {/* Elementos decorativos */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
         <div className="absolute top-0 right-0 bg-[#fe5000]/5 w-96 h-96 rounded-full -translate-y-1/2 translate-x-1/2 "></div>
