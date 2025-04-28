@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <div
-      className="flex items-center justify-center sm:justify-start gap-3 sm:gap-5 min-w-0 cursor-pointer transition-transform hover:scale-105 w-full max-w-screen-xl mx-auto py-3 sm:py-4"
+      className="flex items-center justify-center gap-3 sm:gap-5 min-w-0 cursor-pointer transition-transform hover:scale-105 w-full max-w-screen-xl mx-auto py-3 sm:py-4"
       onClick={handleVoltar}
       role="button"
       tabIndex={0}

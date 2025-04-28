@@ -383,12 +383,12 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
   }
 
   return (
-    <div className="container mx-auto py-6 sm:py-10 px-4 max-w-screen-xl">
-      <div className="mb-8 w-full">
+    <div className="container mx-auto py-6 sm:py-10 px-1 max-w-screen-xl">
+      <div className="flex justify-center mb-8 w-full">
         <Header />
       </div>
 
-      <Card className="mx-auto max-w-4xl mt-4 sm:mt-6 shadow-lg transition-all duration-300">
+      <Card className="bg-white mx-auto max-w-4xl mt-4 sm:mt-6 shadow-lg transition-all duration-300">
         <CardContent className="p-4 sm:p-8">
           <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">
             Cadastro de {tipo === "assessor" ? "Assessor" : "Escritório"}

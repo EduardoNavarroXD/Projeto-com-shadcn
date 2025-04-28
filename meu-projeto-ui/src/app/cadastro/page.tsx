@@ -10,15 +10,12 @@ export default function CadastroPage() {
 
   return (
     <main className="min-h-screen bg-[#f8f8f8] flex items-center justify-center px-4 py-6">
-  <Card className="w-full max-w-xl shadow-xl rounded-2xl border border-[#e6e6e6]">
-    <CardContent className="p-8">
+  
       {!tipo ? (
         <TipoCadastro onSelect={setTipo} />
       ) : (
         <FormularioCadastro tipo={tipo} onVoltar={() => setTipo(null)} />
       )}
-    </CardContent>
-  </Card>
 </main>
   );
 }
