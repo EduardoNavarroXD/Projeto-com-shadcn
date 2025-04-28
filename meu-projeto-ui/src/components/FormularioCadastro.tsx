@@ -148,7 +148,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
     setResponsaveis((prev) => prev.filter((_, i) => i !== idx))
   }
 
-  // Funções para gerenciar arquivos
   const handleFileUpload = (files: File[], setter: React.Dispatch<React.SetStateAction<File[]>>) => {
     setter((prev) => {
       const nomesExistentes = new Set(prev.map((f) => f.name))
