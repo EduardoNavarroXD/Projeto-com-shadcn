@@ -14,9 +14,9 @@ export default function TipoCadastro({ onSelect }: { onSelect: (tipo: string) =>
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-2 bg-gray">
+    <div className="min-hw-screen flex flex-col items-center justify-center p-2 bg-gray">
 
-        <div className="mb-6">
+        <div className="mb-7">
           <Header />
         </div>
 
