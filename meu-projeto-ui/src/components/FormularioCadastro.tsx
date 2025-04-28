@@ -691,9 +691,9 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
                             variant="destructive"
                             size="sm"
                             onClick={() => removeResponsavel(idx)}
-                            className="h-8 text-xs sm:text-sm"
+                            className="bg-red-500 hover:bg-red-600 h-8 text-xs sm:text-sm"
                           >
-                            <X className="h-3 w-3 sm:h-4 sm:w-4 mr-1" /> Remover
+                            <X className="bg-red-500 hover:bg-red-600 h-3 w-3 sm:h-4 sm:w-4 mr-1" /> Remover
                           </Button>
                         )}
                       </div>
