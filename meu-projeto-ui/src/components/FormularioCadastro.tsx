@@ -818,7 +818,7 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4 pt-2 sm:pt-4">
+            <div className="flex flex-col-reverse sm:flex-row justify-between gap-3 sm:gap-4 pt-2 sm:pt-4">
               <Button type="button" variant="outline" onClick={onVoltar} className="h-10 sm:h-11 text-sm sm:text-base">
                 Voltar
               </Button>

@@ -124,7 +124,7 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gray">
+    <div className="flex flex-col items-center justify-center p-4 bg-gray">
       <div className="w-full max-w-md">
         <div className="mb-6">
           <Header />
