@@ -15,14 +15,11 @@ export default function TipoCadastro({ onSelect }: { onSelect: (tipo: string) =>
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-2 bg-gray">
-      {/* Conteúdo principal */}
       <div className="w-full max-w-xl">
-        {/* Logo e título */}
         <div className="mb-6">
           <Header />
         </div>
 
-        {/* Card principal */}
         <Card className="w-full shadow-md border border-gray-100 border-t-4 border-t-[#fe5000] bg-white">
           <CardHeader className="pb-2">
             <Button

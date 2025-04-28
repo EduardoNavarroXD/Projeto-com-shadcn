@@ -40,7 +40,6 @@ export default function LoginForm() {
     const { name, value } = e.target
     setFormState((prev) => ({ ...prev, [name]: value }))
 
-    // Limpar erro quando o usuário começa a digitar
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }))
     }
@@ -89,7 +88,6 @@ export default function LoginForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    // Marcar todos os campos como tocados para mostrar erros
     setTouched({
       email: true,
       password: true,
@@ -103,19 +101,16 @@ export default function LoginForm() {
     setErrors({})
 
     try {
-      // Simulação de login - substitua por sua lógica real de autenticação
       await new Promise((resolve) => setTimeout(resolve, 1500))
 
-      // Exemplo de verificação de credenciais
-      // Na implementação real, isso seria feito no servidor
+     
       if (formState.email === "erro@exemplo.com") {
         throw new Error("Credenciais inválidas")
       }
 
-      // Login bem-sucedido
       setLoginSuccess(true)
 
-      // Redirecionar após login bem-sucedido
+  
       setTimeout(() => {
         router.push("/dashboard")
       }, 1000)
@@ -130,7 +125,6 @@ export default function LoginForm() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gray">
-      {/* Conteúdo principal */}
       <div className="w-full max-w-md">
         <div className="mb-6">
           <Header />

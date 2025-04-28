@@ -33,7 +33,7 @@ interface EnderecoViaCep {
 }
 
 export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastroProps) {
-  // Estado do endereço
+
   const [endereco, setEndereco] = useState({
     cep: "",
     logradouro: "",
@@ -44,7 +44,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
     complemento: "",
   })
 
-  // Estado dos dados pessoais/empresa
   const [dadosPessoais, setDadosPessoais] = useState({
     nomeCompleto: "",
     razaoSocial: "",
@@ -56,20 +55,16 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
     email: "",
   })
 
-  // Estado dos arquivos
   const [personalDocs, setPersonalDocs] = useState<File[]>([])
   const [socialContract, setSocialContract] = useState<File[]>([])
 
-  // Estado dos responsáveis (para escritório)
   const [responsaveis, setResponsaveis] = useState<Responsavel[]>([{ nome: "", cpf: "", telefone: "", email: "" }])
 
-  // Estado de validação
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [cepLoading, setCepLoading] = useState(false)
   const [cepError, setCepError] = useState("")
   const [formSubmitted, setFormSubmitted] = useState(false)
 
-  // Formatadores para campos específicos
   const formatadores = {
     cep: (v: string) => v.replace(/\D/g, "").replace(/(\d{5})(\d)/, "$1-$2"),
     cpf: (v: string) =>
@@ -92,7 +87,7 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
         .replace(/(\d{5})(\d)/, "$1-$2"),
   }
 
-  // Busca endereço pelo CEP
+ 
   useEffect(() => {
     const buscarCep = async () => {
       if (endereco.cep.length === 9) {
@@ -126,7 +121,7 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
     buscarCep()
   }, [endereco.cep])
 
-  // Manipuladores de alteração de estado
+
   const handleEnderecoChange = (field: keyof typeof endereco, value: string) => {
     setEndereco((prev) => ({ ...prev, [field]: value }))
     if (errors[field]) {
@@ -145,7 +140,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
     setResponsaveis((prev) => prev.map((r, i) => (i === idx ? { ...r, [field]: value } : r)))
   }
 
-  // Funções para gerenciar responsáveis
   const addResponsavel = () => {
     setResponsaveis((prev) => [...prev, { nome: "", cpf: "", telefone: "", email: "" }])
   }
@@ -167,7 +161,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
     setter((prev) => prev.filter((_, i) => i !== index))
   }
 
-  // Componente de zona de upload
   const FileUploadZone = ({
     files,
     setter,
@@ -183,12 +176,10 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
     const [isDragging, setIsDragging] = useState(false)
     const dropZoneRef = useRef<HTMLDivElement>(null)
 
-    // Função simplificada para lidar com o drag and drop
     useEffect(() => {
       const dropZone = dropZoneRef.current
       if (!dropZone) return
 
-      // Funções de manipulação de eventos
       const handleDragEnter = (e: DragEvent) => {
         e.preventDefault()
         e.stopPropagation()
@@ -205,8 +196,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
         e.preventDefault()
         e.stopPropagation()
 
-        // Verifica se o cursor saiu realmente da área de drop
-        // e não apenas entrou em um elemento filho
         if (e.currentTarget === dropZone && !dropZone.contains(e.relatedTarget as Node)) {
           setIsDragging(false)
         }
@@ -222,13 +211,12 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
         }
       }
 
-      // Adiciona os event listeners
+
       dropZone.addEventListener("dragenter", handleDragEnter)
       dropZone.addEventListener("dragover", handleDragOver)
       dropZone.addEventListener("dragleave", handleDragLeave)
       dropZone.addEventListener("drop", handleDrop)
 
-      // Limpa os event listeners
       return () => {
         dropZone.removeEventListener("dragenter", handleDragEnter)
         dropZone.removeEventListener("dragover", handleDragOver)
@@ -310,7 +298,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
     )
   }
 
-  // Validação do formulário
   const validarFormulario = () => {
     const novosErros: Record<string, string> = {}
 
@@ -318,7 +305,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
     if (!endereco.cep) novosErros.cep = "CEP é obrigatório"
     if (!endereco.numero) novosErros.numero = "Número é obrigatório"
 
-    // Validar dados pessoais/empresa
     if (tipo === "assessor") {
       if (!dadosPessoais.nomeCompleto) novosErros.nomeCompleto = "Nome é obrigatório"
       if (!dadosPessoais.cpf) novosErros.cpf = "CPF é obrigatório"
@@ -330,13 +316,11 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
     if (!dadosPessoais.telefone) novosErros.telefone = "Telefone é obrigatório"
     if (!dadosPessoais.email) novosErros.email = "E-mail é obrigatório"
 
-    // Validar documentos
     if (personalDocs.length === 0) novosErros.personalDocs = "Documentos pessoais são obrigatórios"
     if (tipo === "escritorio" && socialContract.length === 0) {
       novosErros.socialContract = "Contrato Social é obrigatório"
     }
 
-    // Validar responsáveis (para escritório)
     if (tipo === "escritorio") {
       responsaveis.forEach((resp, idx) => {
         if (!resp.nome) novosErros[`responsavel_${idx}_nome`] = "Nome é obrigatório"
@@ -350,7 +334,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
     return Object.keys(novosErros).length === 0
   }
 
-  // Envio do formulário
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     setFormSubmitted(true)
@@ -360,7 +343,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
       return
     }
 
-    // Aqui você enviaria os dados para o servidor
     console.log({
       tipo,
       endereco,
@@ -374,7 +356,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
 
     toast.success("Cadastro enviado com sucesso!")
 
-    // Resetar formulário
     setEndereco({
       cep: "",
       logradouro: "",
@@ -415,7 +396,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
           </h1>
 
           <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
-            {/* Seção de Endereço */}
             <div className="space-y-3 sm:space-y-4">
               <h2 className="text-lg sm:text-xl font-semibold border-b pb-3">Endereço</h2>
 
@@ -531,7 +511,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
               </div>
             </div>
 
-            {/* Seção de Dados Pessoais/Empresa */}
             <div className="space-y-3 sm:space-y-4">
               <h2 className="text-lg sm:text-xl font-semibold border-b pb-3">
                 {tipo === "assessor" ? "Dados Pessoais" : "Dados da Empresa"}
@@ -696,7 +675,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
               </div>
             </div>
 
-            {/* Seção de Responsáveis (apenas para escritório) */}
             {tipo === "escritorio" && (
               <div className="space-y-3 sm:space-y-4">
                 <h2 className="text-base sm:text-lg font-semibold border-b pb-2 flex items-center gap-1">
@@ -811,7 +789,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
               </div>
             )}
 
-            {/* Seção de Documentos */}
             <div className="space-y-3 sm:space-y-4">
               <h2 className="text-lg sm:text-xl font-semibold border-b pb-3">Documentos</h2>
 
@@ -836,14 +813,12 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
               )}
             </div>
 
-            {/* Mensagem de campos obrigatórios */}
             <div className="text-xs sm:text-sm text-muted-foreground">
               <p>
                 Campos marcados com <span className="text-red-500">*</span> são obrigatórios
               </p>
             </div>
 
-            {/* Botões de ação */}
             <div className="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4 pt-2 sm:pt-4">
               <Button type="button" variant="outline" onClick={onVoltar} className="h-10 sm:h-11 text-sm sm:text-base">
                 Voltar
@@ -856,7 +831,6 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
               </Button>
             </div>
 
-            {/* Feedback de sucesso após envio */}
             {formSubmitted && Object.keys(errors).length === 0 && (
               <Alert className="bg-green-50 border-green-200">
                 <CheckCircle2 className="h-4 w-4 text-green-500" />
