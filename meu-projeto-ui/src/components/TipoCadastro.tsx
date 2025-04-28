@@ -15,7 +15,7 @@ export default function TipoCadastro({ onSelect }: { onSelect: (tipo: string) =>
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-2 bg-gray">
-      <div className="w-full max-w-xl">
+
         <div className="mb-6">
           <Header />
         </div>
@@ -88,6 +88,5 @@ export default function TipoCadastro({ onSelect }: { onSelect: (tipo: string) =>
           <p className="text-xs text-gray-500">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>
         </div>
       </div>
-    </div>
   )
 }
