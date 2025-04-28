@@ -403,21 +403,23 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
   }
 
   return (
-    <div className="container mx-auto py-4 px-2 sm:px-4 sm:py-6">
-      <Header />
+    <div className="container mx-auto py-6 sm:py-10 px-4 max-w-screen-xl">
+      <div className="mb-8 w-full">
+        <Header />
+      </div>
 
-      <Card className="mx-auto max-w-2xl mt-4 sm:mt-6">
-        <CardContent className="p-3 sm:p-6">
-          <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">
+      <Card className="mx-auto max-w-4xl mt-4 sm:mt-6 shadow-lg transition-all duration-300">
+        <CardContent className="p-4 sm:p-8">
+          <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">
             Cadastro de {tipo === "assessor" ? "Assessor" : "Escritório"}
           </h1>
 
-          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
             {/* Seção de Endereço */}
             <div className="space-y-3 sm:space-y-4">
-              <h2 className="text-base sm:text-lg font-semibold border-b pb-2">Endereço</h2>
+              <h2 className="text-lg sm:text-xl font-semibold border-b pb-3">Endereço</h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-1 sm:space-y-2">
                   <Label htmlFor="cep" className="flex items-center gap-1 text-sm sm:text-base">
                     CEP<span className="text-red-500">*</span>
@@ -481,7 +483,7 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-1 sm:space-y-2">
                   <Label htmlFor="complemento" className="text-sm sm:text-base">
                     Complemento
@@ -507,7 +509,7 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-1 sm:space-y-2">
                   <Label htmlFor="cidade" className="flex items-center gap-1 text-sm sm:text-base">
                     Cidade<span className="text-red-500">*</span>
@@ -531,7 +533,7 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
 
             {/* Seção de Dados Pessoais/Empresa */}
             <div className="space-y-3 sm:space-y-4">
-              <h2 className="text-base sm:text-lg font-semibold border-b pb-2">
+              <h2 className="text-lg sm:text-xl font-semibold border-b pb-3">
                 {tipo === "assessor" ? "Dados Pessoais" : "Dados da Empresa"}
               </h2>
 
@@ -612,7 +614,7 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-1 sm:space-y-2">
                       <Label htmlFor="cnpj" className="flex items-center gap-1 text-sm sm:text-base">
                         CNPJ<span className="text-red-500">*</span>
@@ -649,7 +651,7 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
                 </>
               )}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-1 sm:space-y-2">
                   <Label htmlFor="telefone" className="flex items-center gap-1 text-sm sm:text-base">
                     Telefone<span className="text-red-500">*</span>
@@ -811,7 +813,7 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
 
             {/* Seção de Documentos */}
             <div className="space-y-3 sm:space-y-4">
-              <h2 className="text-base sm:text-lg font-semibold border-b pb-2">Documentos</h2>
+              <h2 className="text-lg sm:text-xl font-semibold border-b pb-3">Documentos</h2>
 
               <FileUploadZone
                 files={personalDocs}

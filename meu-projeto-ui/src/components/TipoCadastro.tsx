@@ -2,17 +2,10 @@
 
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import { Lato } from "next/font/google"
 import { Card, CardContent, CardHeader, CardFooter } from "@/components/ui/card"
 import { ArrowLeft, UserRound, Building2 } from "lucide-react"
 import Link from "next/link"
-
-const latoBoldItalic = Lato({
-  weight: "700",
-  style: "italic",
-  subsets: ["latin"],
-})
+import Header from "@/components/Header"
 
 export default function TipoCadastro({ onSelect }: { onSelect: (tipo: string) => void }) {
   const router = useRouter()
@@ -21,54 +14,16 @@ export default function TipoCadastro({ onSelect }: { onSelect: (tipo: string) =>
   }
 
   return (
-    <div className="max-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-br from-white to-gray-100">
-      {/* Elementos decorativos - iguais aos da tela de login */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute top-0 right-0 bg-[#fe5000]/5 w-96 h-96 rounded-full -translate-y-1/2 translate-x-1/2 "></div>
-        <div className="absolute bottom-0 left-0 bg-[#fe5000]/5 w-96 h-96 rounded-full translate-y-1/2 -translate-x-1/2 "></div>
-
-        {/* Padrão de pontos decorativos - visível apenas em telas maiores */}
-        <div className="hidden lg:block absolute top-20 left-20">
-          <div className="grid grid-cols-3 gap-4">
-            {[...Array(9)].map((_, i) => (
-              <div key={i} className="w-2 h-2 rounded-full bg-[#fe5000]/20"></div>
-            ))}
-          </div>
-        </div>
-        <div className="hidden lg:block absolute bottom-20 right-20">
-          <div className="grid grid-cols-3 gap-4">
-            {[...Array(9)].map((_, i) => (
-              <div key={i} className="w-2 h-2 rounded-full bg-[#fe5000]/20"></div>
-            ))}
-          </div>
-        </div>
-
-        {/* Linhas decorativas - visíveis apenas em telas maiores */}
-        <div className="hidden lg:block absolute top-0 left-1/4 w-px h-32 bg-gradient-to-b from-transparent via-[#fe5000]/20 to-transparent"></div>
-        <div className="hidden lg:block absolute top-0 right-1/4 w-px h-48 bg-gradient-to-b from-transparent via-[#fe5000]/20 to-transparent"></div>
-        <div className="hidden lg:block absolute bottom-0 left-1/3 w-px h-48 bg-gradient-to-t from-transparent via-[#fe5000]/20 to-transparent"></div>
-        <div className="hidden lg:block absolute bottom-0 right-1/3 w-px h-32 bg-gradient-to-t from-transparent via-[#fe5000]/20 to-transparent"></div>
-      </div>
-
+    <div className="min-h-screen flex flex-col items-center justify-center p-2 bg-gray">
       {/* Conteúdo principal */}
-      <div className="w-full max-w-xl z-10 px-4">
+      <div className="w-full max-w-xl">
         {/* Logo e título */}
-        <div className="flex items-center justify-center gap-2 sm:gap-4 mb-6 min-w-0 cursor-pointer transition">
-          <div className="flex-shrink-0 w-10 h-10 sm:w-14 sm:h-14 relative">
-            <Image src="https://app.fiancarapida.com/logo.svg" alt="Logo" fill className="object-contain" unoptimized />
-          </div>
-          <h1
-            className={`${latoBoldItalic.className} 
-              font-bold italic text-[#fe5000] whitespace-nowrap
-              text-[clamp(1.25rem,5vw,2rem)]
-              flex-shrink`}
-          >
-            Fiança Rápida
-          </h1>
+        <div className="mb-6">
+          <Header />
         </div>
 
         {/* Card principal */}
-        <Card className="w-full bg-white/90 shadow-xl border border-gray-100 border-t-4 border-t-[#fe5000]">
+        <Card className="w-full shadow-md border border-gray-100 border-t-4 border-t-[#fe5000] bg-white">
           <CardHeader className="pb-2">
             <Button
               variant="ghost"

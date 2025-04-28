@@ -129,42 +129,14 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="m-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-br from-white to-gray-100">
-      {/* Elementos decorativos */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute top-0 right-0 bg-[#fe5000]/5 w-96 h-96 rounded-full -translate-y-1/2 translate-x-1/2 "></div>
-        <div className="absolute bottom-0 left-0 bg-[#fe5000]/5 w-96 h-96 rounded-full translate-y-1/2 -translate-x-1/2 "></div>
-
-        {/* Padrão de pontos decorativos - visível apenas em telas maiores */}
-        <div className="hidden lg:block absolute top-20 left-20">
-          <div className="grid grid-cols-3 gap-4">
-            {[...Array(9)].map((_, i) => (
-              <div key={i} className="w-2 h-2 rounded-full bg-[#fe5000]/20"></div>
-            ))}
-          </div>
-        </div>
-        <div className="hidden lg:block absolute bottom-20 right-20">
-          <div className="grid grid-cols-3 gap-4">
-            {[...Array(9)].map((_, i) => (
-              <div key={i} className="w-2 h-2 rounded-full bg-[#fe5000]/20"></div>
-            ))}
-          </div>
-        </div>
-
-        {/* Linhas decorativas - visíveis apenas em telas maiores */}
-        <div className="hidden lg:block absolute top-0 left-1/4 w-px h-32 bg-gradient-to-b from-transparent via-[#fe5000]/20 to-transparent"></div>
-        <div className="hidden lg:block absolute top-0 right-1/4 w-px h-48 bg-gradient-to-b from-transparent via-[#fe5000]/20 to-transparent"></div>
-        <div className="hidden lg:block absolute bottom-0 left-1/3 w-px h-48 bg-gradient-to-t from-transparent via-[#fe5000]/20 to-transparent"></div>
-        <div className="hidden lg:block absolute bottom-0 right-1/3 w-px h-32 bg-gradient-to-t from-transparent via-[#fe5000]/20 to-transparent"></div>
-      </div>
-
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gray">
       {/* Conteúdo principal */}
-      <div className="w-full max-w-md z-10 px-4">
+      <div className="w-full max-w-md">
         <div className="mb-6">
           <Header />
         </div>
 
-        <Card className="w-full bg-white/90 shadow-xl border border-gray-100 border-t-4 border-t-[#fe5000]">
+        <Card className="w-full shadow-md border border-gray-100 border-t-4 border-t-[#fe5000] bg-white">
           <CardHeader className="pb-2">
             <h1 className="text-2xl font-bold text-center">Acesse sua conta</h1>
             <p className="text-sm text-muted-foreground text-center mt-1">
@@ -203,7 +175,7 @@ export default function LoginForm() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   disabled={isLoading || loginSuccess}
-                  className={`${touched.email && errors.email ? "border-red-500 focus-visible:ring-red-500" : ""} bg-white`}
+                  className={`${touched.email && errors.email ? "border-red-500 focus-visible:ring-red-500" : ""}`}
                   aria-invalid={!!(touched.email && errors.email)}
                   aria-describedby={errors.email ? "email-error" : undefined}
                 />
@@ -235,7 +207,7 @@ export default function LoginForm() {
                     disabled={isLoading || loginSuccess}
                     className={`${
                       touched.password && errors.password ? "border-red-500 focus-visible:ring-red-500" : ""
-                    } pr-10 bg-white`}
+                    } pr-10`}
                     aria-invalid={!!(touched.password && errors.password)}
                     aria-describedby={errors.password ? "password-error" : undefined}
                   />
