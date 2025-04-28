@@ -781,7 +781,7 @@ export default function FormularioCadastro({ tipo, onVoltar }: FormularioCadastr
                   type="button"
                   onClick={addResponsavel}
                   variant="outline"
-                  className="w-full h-9 sm:h-10 text-sm sm:text-base"
+                  className="bg-[#00AEFE] hover:bg-[#0090d1] text-white w-full h-9 sm:h-10 text-sm sm:text-base"
                 >
                   Adicionar Responsável
                 </Button>
